@@ -1,0 +1,26 @@
+@import url('../../index.css');
+
+.header {
+  background-color: var(--white-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 150px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list a {
+  font-family: var(--title-font);
+  font-weight: 500;
+  font-size: 1.625rem;
+  text-decoration: none;
+  color: var(--dark-cyan-color);
+}
+
+.list {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

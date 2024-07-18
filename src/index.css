@@ -1,10 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+  --title-font: 'Instrument Sans', sans-serif;
+  --text-font: 'Asap', sans-serif;
+
+  --cyan-color: #00AAAF;
+  --green-color: #00A551;
+  --orange-color: #EA4F2A;
+  --dark-cyan-color: #004F5A;
+  --white-color: #FFFFFF;
+}
+
+body{
+  margin: 0
 }

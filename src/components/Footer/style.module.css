@@ -1,0 +1,29 @@
+@import url('../../index.css');
+
+.address {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 100px;
+}
+
+.address div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  background-color: var(--green-color);
+  width: 360px;
+  height: 100px;
+  border-radius: 0px 50px;
+}
+
+.address p {
+  display: inline-block;
+  font-family: var(--text-font);
+  font-style: normal;
+  font-size: 1.875rem;
+  margin: 0;
+  color: var(--white-color);
+}
