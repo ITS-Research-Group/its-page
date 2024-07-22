@@ -1,0 +1,69 @@
+@import url('../../index.css');
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 130px 100px;
+}
+
+.main h2 {
+  font-size: 3rem;
+  color: var(--green-color);
+  font-family: var(--title-font);
+}
+
+.introduction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.introduction h1 {
+  color: var(--dark-cyan-color);
+  font-weight: 700;
+  font-size: 5.5rem;
+  max-width: 550px;
+  margin-right: -120px;
+}
+
+.mission p {
+  font-size: 1.875rem;
+  color: var(--dark-cyan-color);
+  font-family: var(--text-font);
+}
+
+.mission, .projects {
+  max-width: 1200px;
+  width: 100%;
+}
+
+@media (min-width: 951px) and (max-width: 1250px) {
+  .introduction h1 {
+    font-size: 4.2rem;
+    max-width: 500px;
+  }
+
+  .introduction img {
+    width: 530px;
+  }
+}
+
+@media (max-width: 950px) {
+  .main {
+    margin: 110px 60px;
+  }
+
+  .introduction {
+    display: none;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .main {
+    margin: 110px 30px;
+  }
+}

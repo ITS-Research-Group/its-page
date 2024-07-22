@@ -1,20 +1,31 @@
 @import url('../../index.css');
 
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: var(--white-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 150px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+
 }
 
-.list a {
-  font-family: var(--title-font);
-  font-weight: 500;
-  font-size: 1.625rem;
-  text-decoration: none;
-  color: var(--dark-cyan-color);
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .list {
@@ -23,4 +34,91 @@
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.list a {
+  font-family: var(--title-font);
+  font-weight: 500;
+  font-size: 1.625rem;
+  text-decoration: none;
+  color: var(--dark-cyan-color);
+  border-bottom-width: 10%;
+  padding-bottom: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+.list a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0%;
+  height: 3px;
+  background-color: var(--dark-cyan-color);
+  transform: translateX(-50%);
+  transition: width 0.5s ease;
+}
+
+.list a:hover::after {
+  width: 100%;
+}
+
+@media (min-width: 701px) and (max-width: 1000px)  {
+  .header{
+    padding: 20px 50px;
+  }
+}
+
+@media (max-width: 700px) {
+  .header{
+    flex-direction: column;
+    padding: 25px 30px;
+    transition: height 0.3s ease;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease; 
+    opacity: 0;
+  }
+  
+  .nav.open {
+    max-height: 210px; 
+    opacity: 1;
+  }
+
+  .logoWithButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .menuButton {
+    display: block;
+  }
+
+  .list {
+    margin: 10px 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .icon {
+    width: 35px;
+    transition: transform 0.5s ease; 
+  }
+  
+  .rotateIn {
+    transform: rotate(-180deg);
+  }
+  
+  .rotateOut {
+    transform: rotate(0deg);
+  }
 }

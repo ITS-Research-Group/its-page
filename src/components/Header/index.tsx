@@ -1,11 +1,28 @@
+import { useState } from 'react';
 import styles from './style.module.css';
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <header className={styles.header}>
-      <img src="/logo-its.svg" alt="Logo ITS" />
+      <div className={styles.logoWithButton}>
+        <img src="/logo-its.svg" alt="Logo ITS" />
 
-      <nav>
+        <button className={styles.menuButton} onClick={toggleMenu}>
+          <img
+            className={`${styles.icon} ${menuOpen ? styles.rotateIn : styles.rotateOut}`}
+            src={'/menu-show.svg'}
+            alt=""
+          />
+        </button>
+      </div>
+
+      <nav className={`${styles.nav} ${menuOpen ? styles.open : ''}`}>
         <ul className={styles.list}>
           <li>
             <a href="#home">home</a>
