@@ -12,6 +12,8 @@
   --orange-color: #EA4F2A;
   --dark-cyan-color: #004F5A;
   --white-color: #FFFFFF;
+
+  --max-width-content: 1200px;
 }
 
 body{

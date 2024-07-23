@@ -18,7 +18,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 1200px;
+  max-width: var(--max-width-content);
 }
 
 .introduction h1 {
@@ -36,7 +36,7 @@
 }
 
 .mission, .projects {
-  max-width: 1200px;
+  max-width: var(--max-width-content);
   width: 100%;
 }
 

@@ -1,34 +1,45 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './style.module.css';
+import { Years } from '../../types/attributesTypes';
+import { DataItem } from '../../types/responseTypes';
 
-const years = [
-  { year: 2019, description: '' },
-  { year: 2020, description: '' },
-  { year: 2021, description: '' },
-  { year: 2022, description: '' },
-  { year: 2023, description: '' },
-  { year: 2024, description: '' },
-];
+interface TimelineProps {
+  years: DataItem<Years>[];
+  selectedYear: DataItem<Years> | null;
+  setSelectedYear: React.Dispatch<React.SetStateAction<DataItem<Years> | null>>;
+}
 
-export default function Timeline() {
+export default function Timeline({
+  years,
+  selectedYear,
+  setSelectedYear,
+}: TimelineProps) {
   const timelineRef = useRef<HTMLDivElement>(null);
   const [showButtons, setShowButtons] = useState(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
 
-  useEffect(() => {
-    const checkOverflow = () => {
-      if (timelineRef.current) {
-        const hasOverflow =
-          timelineRef.current.scrollWidth > timelineRef.current.clientWidth;
-        setShowButtons(hasOverflow);
-        setIsOverflowing(hasOverflow);
-      }
-    };
+  const checkOverflow = () => {
+    if (timelineRef.current) {
+      const hasOverflow =
+        timelineRef.current.scrollWidth > timelineRef.current.clientWidth;
+      setShowButtons(hasOverflow);
+      setIsOverflowing(hasOverflow);
+    }
+  };
 
+  useEffect(() => {
     checkOverflow();
     window.addEventListener('resize', checkOverflow);
     return () => window.removeEventListener('resize', checkOverflow);
   }, []);
+
+  useEffect(() => {
+    checkOverflow();
+  }, [years]);
+
+  useEffect(() => {
+    console.log(selectedYear);
+  }, [selectedYear]);
 
   const scrollLeft = () => {
     if (timelineRef.current) {
@@ -39,6 +50,14 @@ export default function Timeline() {
   const scrollRight = () => {
     if (timelineRef.current) {
       timelineRef.current.scrollBy({ left: 100, behavior: 'smooth' });
+    }
+  };
+
+  const handleChangeSelectedYear = (id: number) => {
+    if (selectedYear?.id === id) setSelectedYear(null);
+    else {
+      const year = years.find((year) => year.id === id);
+      setSelectedYear(year ? year : null);
     }
   };
 
@@ -53,7 +72,15 @@ export default function Timeline() {
       )}
       <div className={styles.timeline} ref={timelineRef}>
         {years.map((year) => (
-          <p key={year.year}>{year.year}</p>
+          <p
+            key={year.id}
+            className={`${styles.timelineYear} ${selectedYear?.id === year.id ? styles.timelineYearSelectedColor : ''}`}
+            onClick={() => {
+              handleChangeSelectedYear(year.id);
+            }}
+          >
+            {year.attributes.year}
+          </p>
         ))}
       </div>
       {showButtons && (

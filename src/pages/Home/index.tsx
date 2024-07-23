@@ -1,7 +1,26 @@
 import styles from './style.module.css';
 import Timeline from '../../components/Timeline';
+import { useEffect, useState } from 'react';
+import { getYears } from '../../services/getYears';
+import { DataItem } from '../../types/responseTypes';
+import { Years } from '../../types/attributesTypes';
+import Projects from '../../components/Projects';
 
 export default function Home() {
+  const [selectedYear, setSelectedYear] = useState<DataItem<Years> | null>(
+    null,
+  );
+  const [years, setYears] = useState<DataItem<Years>[]>([]);
+
+  useEffect(() => {
+    const getYearsData = async () => {
+      const yearsData = await getYears();
+      if (yearsData) setYears(yearsData);
+    };
+
+    getYearsData();
+  }, []);
+
   return (
     <main className={styles.main}>
       <div className={styles.introduction}>
@@ -24,7 +43,13 @@ export default function Home() {
 
       <div className={styles.projects}>
         <h2>Projects</h2>
-        <Timeline />
+        <Timeline
+          years={years}
+          selectedYear={selectedYear}
+          setSelectedYear={setSelectedYear}
+        />
+
+        <Projects year={selectedYear} />
       </div>
     </main>
   );
