@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import { getYears } from '../../services/getYears';
 import { DataItem } from '../../types/responseTypes';
 import { Years } from '../../types/attributesTypes';
-import Projects from '../../components/Projects';
+import ProjectsList from '../../components/Projects';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 export default function Home() {
   const [selectedYear, setSelectedYear] = useState<DataItem<Years> | null>(
@@ -15,6 +16,7 @@ export default function Home() {
   useEffect(() => {
     const getYearsData = async () => {
       const yearsData = await getYears();
+
       if (yearsData) setYears(yearsData);
     };
 
@@ -43,13 +45,22 @@ export default function Home() {
 
       <div className={styles.projects}>
         <h2>Projects</h2>
-        <Timeline
-          years={years}
-          selectedYear={selectedYear}
-          setSelectedYear={setSelectedYear}
-        />
 
-        <Projects year={selectedYear} />
+        {years.length > 0 ? (
+          <>
+            <Timeline
+              years={years}
+              selectedYear={selectedYear}
+              setSelectedYear={setSelectedYear}
+            />
+
+            <ProjectsList year={selectedYear} />
+          </>
+        ) : (
+          <div className={styles.loadingContainer}>
+            <LoadingSpinner />
+          </div>
+        )}
       </div>
     </main>
   );

@@ -1,0 +1,167 @@
+.projectMainContainer {
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.274);
+  height: 100vh;
+  width: 100%;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+}
+
+.projectPageContainer {
+  position: absolute;
+  bottom: 0;
+  background-color: var(--white-color);
+  height: 88%;
+  width: 88%;
+  border-radius: 80px 80px 0 0;
+  padding: 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectDetails {
+  overflow: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.projectDetails h1 {
+  font-size: 4rem;
+  color: var(--cyan-color);
+  font-weight: 700;
+  font-family: var(--title-font);
+  margin: 0;
+}
+
+.projectDetails h2 {
+  font-size: 3rem;
+  color: var(--cyan-color);
+  font-weight: 700;
+  font-family: var(--title-font);
+  margin: 0;
+}
+
+.projectDetails p {
+  font-size: 1.875rem;
+  color: var(--dark-cyan-color);
+  font-weight: 400;
+  font-family: var(--text-font);
+  margin: 0;
+}
+
+.statusContainer, .status{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.statusContainer {
+  margin: 30px 0;
+  gap: 52px;
+}
+
+.status{
+  gap: 20px;
+}
+
+.status div{
+  height: 34px;
+  width: 34px;
+  border: 3px solid var(--dark-cyan-color);
+  border-radius: 50%;
+}
+
+.statusUnchecked {
+  background-color: var(--white-color);
+}
+
+.statusChecked {
+  background-color: var(--dark-cyan-color);
+}
+
+.picturesWrapper {
+  position: relative; /* Para os botões serem posicionados relativos a este contêiner */
+}
+
+.picturesContainer {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto; 
+  margin: 50px 0;
+  scrollbar-width: none;
+}
+
+.overflow {
+  justify-content: flex-start; 
+}
+
+.noOverflow {
+  justify-content: center;
+}
+
+.picturesContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.picture {
+  width: 555px;
+  height: 350px;
+  object-fit: cover;
+  border-top-left-radius: 90px;
+}
+
+.picturesContainer .picture:first-child {
+  margin-left: 40px;
+}
+
+.picturesContainer .picture:last-child {
+  margin-right: 50px;
+}
+
+.scrollButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 15px;
+  background-color: var(--white-color);
+  border: none;
+  cursor: pointer;
+  z-index: 10; 
+  transition: filter 0.5s ease;
+}
+
+.scrollButton:hover{
+  filter: contrast(0.8);
+}
+
+.scrollButton img{
+  height: 30px;
+  width: 30px;
+  margin: 0;
+}
+
+.scrollButtonRight {
+  right: 0; 
+  border-radius: 50px 0 0 50px;
+}
+
+.scrollButtonRight img {
+  transform: rotate(180deg);
+}
+
+.scrollButtonLeft {
+  left: 0; 
+  border-radius: 0 50px 50px 0;
+}
+
+.teamContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+}

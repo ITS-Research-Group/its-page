@@ -37,10 +37,6 @@ export default function Timeline({
     checkOverflow();
   }, [years]);
 
-  useEffect(() => {
-    console.log(selectedYear);
-  }, [selectedYear]);
-
   const scrollLeft = () => {
     if (timelineRef.current) {
       timelineRef.current.scrollBy({ left: -100, behavior: 'smooth' });
