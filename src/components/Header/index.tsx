@@ -8,6 +8,13 @@ export default function Header() {
     setMenuOpen(!menuOpen);
   };
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.logoWithButton}>
@@ -25,16 +32,13 @@ export default function Header() {
       <nav className={`${styles.nav} ${menuOpen ? styles.open : ''}`}>
         <ul className={styles.list}>
           <li>
-            <a href="#home">home</a>
+            <a onClick={() => scrollToSection('mission')}>mission</a>
           </li>
           <li>
-            <a href="#about">mission</a>
+            <a onClick={() => scrollToSection('projects')}>projects</a>
           </li>
           <li>
-            <a href="#services">projects</a>
-          </li>
-          <li>
-            <a href="#contact">contact</a>
+            <a onClick={() => scrollToSection('contact')}>contact</a>
           </li>
         </ul>
       </nav>

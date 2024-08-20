@@ -2,7 +2,7 @@ import styles from './style.module.css';
 
 export default function Footer() {
   return (
-    <footer>
+    <footer id="contact">
       <address className={styles.address}>
         <div>
           <img src="/email-icon.svg" alt="" />

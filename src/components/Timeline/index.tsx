@@ -63,7 +63,7 @@ export default function Timeline({
     >
       {showButtons && (
         <button className={styles.scrollButton} onClick={scrollLeft}>
-          <img src="/public/arrow.svg" alt="back arrow" />
+          <img src="/arrow.svg" alt="back arrow" />
         </button>
       )}
       <div className={styles.timeline} ref={timelineRef}>
@@ -81,7 +81,7 @@ export default function Timeline({
       </div>
       {showButtons && (
         <button className={styles.scrollButton} onClick={scrollRight}>
-          <img src="/public/arrow.svg" alt="back arrow" />
+          <img src="/arrow.svg" alt="back arrow" />
         </button>
       )}
     </div>

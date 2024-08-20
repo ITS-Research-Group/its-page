@@ -67,6 +67,7 @@ interface ImageAttributes {
 export interface Project extends AttributesBase {
   status: string;
   name: string;
+  publishingInformation: string;
   description: string;
   team: TeamMember[];
   year: Year;

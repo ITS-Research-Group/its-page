@@ -57,6 +57,17 @@ export default function ProjectPage({
         className={styles.projectPageContainer}
         onClick={(e) => e.stopPropagation()}
       >
+        <div className={styles.closePageButtonContainer}>
+          <div
+            className={styles.closePageButton}
+            onClick={() => {
+              handleClose();
+            }}
+          >
+            <p>X</p>
+          </div>
+        </div>
+
         <div className={styles.projectDetails}>
           <h1>{project.attributes.name}</h1>
 
@@ -85,6 +96,7 @@ export default function ProjectPage({
           </div>
 
           <p>{project.attributes.description}</p>
+
           {project.attributes.pictures.data && (
             <div className={styles.picturesWrapper}>
               {showButtons && (
@@ -92,7 +104,7 @@ export default function ProjectPage({
                   className={`${styles.scrollButton} ${styles.scrollButtonLeft}`}
                   onClick={scrollLeft}
                 >
-                  <img src="/public/arrow-dark-cyan.svg" alt="back arrow" />
+                  <img src="/arrow-dark-cyan.svg" alt="back arrow" />
                 </button>
               )}
 
@@ -101,12 +113,18 @@ export default function ProjectPage({
                 ref={timelineRef}
               >
                 {project.attributes.pictures.data.map((picture) => (
-                  <img
+                  <a
                     key={picture.id}
-                    src={`${backEndpoint}${picture.attributes.url}`}
-                    alt="Project Picture"
-                    className={styles.picture}
-                  />
+                    href={`${backEndpoint}${picture.attributes.url}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={`${backEndpoint}${picture.attributes.url}`}
+                      alt="Project Picture"
+                      className={styles.picture}
+                    />
+                  </a>
                 ))}
               </div>
 
@@ -115,11 +133,14 @@ export default function ProjectPage({
                   className={`${styles.scrollButton} ${styles.scrollButtonRight}`}
                   onClick={scrollRight}
                 >
-                  <img src="/public/arrow-dark-cyan.svg" alt="next arrow" />
+                  <img src="/arrow-dark-cyan.svg" alt="next arrow" />
                 </button>
               )}
             </div>
           )}
+
+          <h2>Where was it published?</h2>
+          <p>{project.attributes.publishingInformation}</p>
 
           <h2>Team</h2>
           <div className={styles.teamContainer}>

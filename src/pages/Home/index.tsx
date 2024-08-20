@@ -7,7 +7,7 @@ import { Years } from '../../types/attributesTypes';
 import ProjectsList from '../../components/Projects';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
-export default function Home() {
+export default function MainPage() {
   const [selectedYear, setSelectedYear] = useState<DataItem<Years> | null>(
     null,
   );
@@ -17,7 +17,14 @@ export default function Home() {
     const getYearsData = async () => {
       const yearsData = await getYears();
 
-      if (yearsData) setYears(yearsData);
+      if (yearsData) {
+        const sortedYearsData = yearsData.sort(
+          (a: DataItem<Years>, b: DataItem<Years>) =>
+            a.attributes.year - b.attributes.year,
+        );
+
+        setYears(sortedYearsData);
+      }
     };
 
     getYearsData();
@@ -30,7 +37,7 @@ export default function Home() {
         <img src="/home-image.png" alt="" />
       </div>
 
-      <div className={styles.mission}>
+      <div id="mission" className={styles.mission}>
         <h2>Mission</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
@@ -43,7 +50,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className={styles.projects}>
+      <div id="projects" className={styles.projects}>
         <h2>Projects</h2>
 
         {years.length > 0 ? (
