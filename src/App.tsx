@@ -1,4 +1,4 @@
-import MainPage from './pages/Home';
+import MainPage from './pages/MainPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 

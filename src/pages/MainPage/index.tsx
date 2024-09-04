@@ -40,13 +40,14 @@ export default function MainPage() {
       <div id="mission" className={styles.mission}>
         <h2>Mission</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
-          mollitia minus quod ea esse necessitatibus velit eligendi. Blanditiis
-          voluptate cupiditate quaerat, aut cum aperiam a suscipit excepturi
-          nemo earum et? Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Quisquam esse obcaecati suscipit quaerat quo nesciunt delectus
-          voluptatibus, placeat qui ab? Eius eveniet placeat ad nostrum
-          perferendis, odit necessitatibus neque voluptas!
+          Our mission is to advance the frontiers of sustainable energy and
+          waste management through cutting-edge research and innovative
+          solutions. We are dedicated to pioneering methods for efficient
+          hydrogen production, harnessing its potential as a clean energy
+          source, while simultaneously developing strategies to optimize urban
+          waste management. By integrating scientific discovery with practical
+          applications, we strive to contribute to a more sustainable and
+          resilient future for communities worldwide.
         </p>
       </div>
 
